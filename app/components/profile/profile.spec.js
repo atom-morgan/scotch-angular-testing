@@ -108,15 +108,15 @@ describe('components.profile', function() {
 
     it('should call Pokemon.findByName and default to a placeholder image', function() {
       expect(ProfileController.user.pokemon.image).toBeUndefined();
-    
-      $httpBackend.whenGET(API + singleUser.pokemon.name).respond(404, $q.reject(RESPONSE_ERROR));
+
+      $httpBackend.whenGET(API + singleUser.pokemon.name).respond(404, Common.silenceUncaughtInPromise($q.reject(RESPONSE_ERROR)));
       $httpBackend.flush();
 
       expect(PokemonFactory.findByName).toHaveBeenCalledWith('godzilla');
       expect(ProfileController.user.pokemon.image).toEqual('http://i.imgur.com/HddtBOT.png');
     });
   });
-  
+
   describe('Profile Controller with an invalid resolved user', function() {
     var singleUser, ProfileController;
 

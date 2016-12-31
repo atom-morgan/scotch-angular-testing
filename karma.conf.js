@@ -18,6 +18,7 @@ module.exports = function(config) {
       './node_modules/angular/angular.js',
       './node_modules/angular-ui-router/release/angular-ui-router.js',
       './node_modules/angular-mocks/angular-mocks.js',
+      './app/testing/common.js',
       './app/services/users/users.js',
       './app/services/pokemon/pokemon.js',
       './app/components/users/users.js',

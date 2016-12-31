@@ -58,7 +58,7 @@ describe('Pokemon factory', function() {
     it('should return a 404 when called with an invalid name', function() {
       var search = 'godzilla';
 
-      $httpBackend.whenGET(API + search).respond(404, $q.reject(RESPONSE_ERROR));
+      $httpBackend.whenGET(API + search).respond(404, Common.silenceUncaughtInPromise($q.reject(RESPONSE_ERROR)));
 
       expect(Pokemon.findByName).not.toHaveBeenCalled();
       expect(result).toEqual({});
